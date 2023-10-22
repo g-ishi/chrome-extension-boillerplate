@@ -1,0 +1,17 @@
+{
+  "name": "boilerplate-lesson",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack --watch --progress --config webpack.config.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "react": "^18.2.0",
+    "ts-loader": "^9.5.0",
+    "typescript": "^5.2.2"
+  }
+}
