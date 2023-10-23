@@ -14,6 +14,7 @@ module.exports = {
   // バンドルを始めて依存関係を見ていくときの最初のファイル
   entry: {
     popup: path.resolve('src/popup/popup.tsx'),
+    options: path.resolve('src/options/options.tsx'),
   },
   // バンドルするときの追加ルールを定義する
   module: {
@@ -29,11 +30,16 @@ module.exports = {
   },
   // moduleで処理されなかったファイルはpluginsで処理される
   plugins: [
-    // manifest.jsonファイルはそのままdistにコピーする
     new CopyPlugin({
       patterns: [
+        // manifest.jsonファイルはそのままdistにコピーする
         {
           from: path.resolve('src/manifest.json'),
+          to: path.resolve('dist'),
+        },
+        // staticに配置したアイコンファイル等もコピーする
+        {
+          from: path.resolve('src/static'),
           to: path.resolve('dist'),
         },
       ],
@@ -44,6 +50,13 @@ module.exports = {
       title: 'Boilerplate Extension',
       filename: 'popup.html',
       chunks: ['popup'],
+    }),
+    // popupと同様の手順でoptions.htmlファイルを生成して、options chunkをscriptタグとして��入する。
+    // getHtmlPlugins関数のように関数化して外出しするのも可能
+    new HtmlPlugin({
+      title: 'Boilerplate Extension',
+      filename: 'options.html',
+      chunks: ['options'],
     }),
   ],
   resolve: {
@@ -59,4 +72,24 @@ module.exports = {
     // distへの絶対パスを指定
     path: path.resolve('dist'),
   },
+
+  optimization: {
+    // chunk間でモジュールの共有を行う。
+    // 今回で言うとreactモジュールはpopupとoptionsで共通して使っているので、chunk間でのモジュール共有を有効にするとdistのファイルサイズ節約になる
+    // 共有されるファイルは「vnedros-node_**」の名前で共有モジュールとしてバンドルされる
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
 };
+
+// webpack.config.jsはnodejsとして記述されるので、関数定義なども可能
+function getHtmlPlugins(chunks) {
+  return chunks.map((chunk) => {
+    return new HtmlPlugin({
+      title: 'Boilerplate Extension',
+      filename: `${chunk}.html`,
+      chunks: [chunk],
+    });
+  });
+}
