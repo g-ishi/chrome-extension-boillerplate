@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import './popup.css';
 
-const test = <p>test</p>;
+const test = <img src='icon.png' />;
 
 // React 18の新しいルートAPIを使用します。
 // reactをマウントする要素は自分で作成しないとwarningが出る。

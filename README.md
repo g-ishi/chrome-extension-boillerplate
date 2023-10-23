@@ -16,8 +16,9 @@ typescript コンパイラ(tsc)で、typescript コードを javascript コー�
 3. webpack と webpack-cli のインストール
    1. webpack.config.js ファイルの作成と設定追加
       1. typescript と react をバンドルできるように設定
-         1. [こちらのコミット](https://github.com/g-ishi/chrome-extension-boillerplate/commit/1e7ea347417c6333db4300b7848e5ce00c4b2271)を参照
+         1. 作業内容は[こちらのコミット](https://github.com/g-ishi/chrome-extension-boillerplate/commit/1e7ea347417c6333db4300b7848e5ce00c4b2271)を参照
       2. manifest.json や static ファイルがバンドルに含まれるように設定
+         1. 作業内容は[こちらのコミット](https://github.com/g-ishi/chrome-extension-boillerplate/commit/2b2fb6f65c8cb3e1af1bd570a91ee58ac9a03c4b)を参照
       3. css をバンドルできるように設定
 
 ### memo

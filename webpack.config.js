@@ -26,6 +26,21 @@ module.exports = {
         use: 'ts-loader',
         exclude: /node_modules/,
       },
+      // cssファイルはstyle-loaderとcss-loaderで処理する必要がある
+      // バンドルされたcssは独立したファイルではなく、[name].jsファイル内のstyleタグに組み込まれる
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      // アセットファイルを読み込む設定
+      // ソースコード上で画像をimportして使っている場合とかに必要になるっぽい
+      {
+        type: 'asset/resources',
+        test: /\.(png|svg|jpg|gif|woff|woff2|eot|ttf)$/,
+        generator: {
+          filename: '[name].[ext]',
+        },
+      },
     ],
   },
   // moduleで処理されなかったファイルはpluginsで処理される
