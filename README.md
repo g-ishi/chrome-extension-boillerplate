@@ -21,6 +21,8 @@ typescript コンパイラ(tsc)で、typescript コードを javascript コー�
          1. 作業内容は[こちらのコミット](https://github.com/g-ishi/chrome-extension-boillerplate/commit/2b2fb6f65c8cb3e1af1bd570a91ee58ac9a03c4b)を参照
       3. css をバンドルできるように設定
          1. 作業内容は[こちらのコミット](https://github.com/g-ishi/chrome-extension-boillerplate/commit/b79e385627167f4a5be731ef9a3425b913d698c1)を参照
+      4. background と contentScript をバンドルする設定を追加
+         1. 作業内容は[こちらのコミット](https://github.com/g-ishi/chrome-extension-boillerplate/commit/b1a09dc1c9b6f9ee5d93c94d57d81a467ef559bb)を参照
 
 ### memo
 
