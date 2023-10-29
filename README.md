@@ -20,6 +20,7 @@ typescript コンパイラ(tsc)で、typescript コードを javascript コー�
       2. manifest.json や static ファイルがバンドルに含まれるように設定
          1. 作業内容は[こちらのコミット](https://github.com/g-ishi/chrome-extension-boillerplate/commit/2b2fb6f65c8cb3e1af1bd570a91ee58ac9a03c4b)を参照
       3. css をバンドルできるように設定
+         1. 作業内容は[こちらのコミット](https://github.com/g-ishi/chrome-extension-boillerplate/commit/b79e385627167f4a5be731ef9a3425b913d698c1)を参照
 
 ### memo
 
