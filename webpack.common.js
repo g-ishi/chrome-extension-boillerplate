@@ -2,14 +2,18 @@
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
+// webpack での`development`と`production`での生成物は両方読み込まれるとサイズが大きくなってしまうので、`webpack-clean-plugin`で生成前に`dist`ディレクトリを綺麗にする。
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  // modeによって動作が変わるらしい。
-  mode: 'development',
+  // modeによって動作が変わる。
+  // webpack.prod.js or webpack.dev.jsで上書きする
+  // mode: 'development',
 
   // これがない状態でdevelopmentでビルドするとエラーになるので、以下を入れる
   // デバック用にビルド結果と元のファイルとの対応関係を生成するオプション
-  devtool: 'cheap-module-source-map',
+  // webpack.prod.js or webpack.dev.jsで上書きする
+  // devtool: 'cheap-module-source-map',
 
   // バンドルを始めて依存関係を見ていくときの最初のファイル
   entry: {
@@ -47,6 +51,10 @@ module.exports = {
   },
   // moduleで処理されなかったファイルはpluginsで処理される
   plugins: [
+    new CleanWebpackPlugin({
+      // modeが切り替わった時のみディレクトリを綺麗にする
+      cleanStaleWebpackAssets: false,
+    }),
     new CopyPlugin({
       patterns: [
         // manifest.jsonファイルはそのままdistにコピーする

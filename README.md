@@ -25,9 +25,13 @@ typescript コンパイラ(tsc)で、typescript コードを javascript コー�
          1. 作業内容は[こちらのコミット](https://github.com/g-ishi/chrome-extension-boillerplate/commit/b1a09dc1c9b6f9ee5d93c94d57d81a467ef559bb)を参照
       5. typescript の型補完が有効になるように設定
          1. 作業内容は[こちらのコミット](https://github.com/g-ishi/chrome-extension-boillerplate/commit/4fd061ea66d71ba04b29952f9bf0319f4f4449c7)を参照
+4. 本番用の Webpack 設定ファイルと、開発用の Webpack 設定ファイルを分離する
+   - `webpack-merge`ライブラリを使って`webpack.prod.js`と`webpack.dev.js`ファイルを用意し、`webpack.common.js`を継承し、必要な設定値のみを上書きするようにする
+   - 作業内容は[こちらのコミット]()を参照
 
 ### memo
 
 - react も devdependencies でインストールしてる。
-  - たぶん最終的に１つの js ファイルにするだけだから、全部の node モジュールが devdependency って扱いな気がする。
+
+  - 最終的に１つの js ファイルにするだけだから、全部の node モジュールが devdependency の扱いになる。
   - dev-dependency にしても、コードから import されてるものは build アセットに含まれるから大丈夫。
